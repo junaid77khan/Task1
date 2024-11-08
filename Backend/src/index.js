@@ -1,8 +1,7 @@
 import dotenv from 'dotenv'
 import connnectDB from "./db/index.js"
-import { app } from './App.js'
+import { app } from './maincode.js'
 
-// Update env path to be relative to project root
 dotenv.config()
 
 connnectDB()
