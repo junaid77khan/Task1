@@ -5,7 +5,6 @@ import { destroyOnCloudinary, uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
 import mongoose, { Schema, Types } from "mongoose";
-import { signUpSchema } from "../schemas/signUpSchema.js";
 import bcrypt from 'bcrypt';
 import { Employee } from "../models/employee.model.js";
 
