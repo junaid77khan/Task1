@@ -1,6 +1,6 @@
 import mongoose, {Schema} from "mongoose";
 import jwt from "jsonwebtoken"
-import bcrypt from "bcrypt"
+import bcryptjs from "bcryptjs"
 
 const adminSchema = new Schema({
     username: {
@@ -29,7 +29,7 @@ adminSchema.pre("save", async function(next) {
     if( !this.isModified("password") ) return next();
 
     try {
-        this.password = await bcrypt.hash(this.password, 10);
+        this.password = await bcryptjs.hash(this.password, 10);
         return next();
     } catch (error) {
         return next(error)
@@ -38,7 +38,7 @@ adminSchema.pre("save", async function(next) {
 
 // Validate Password
 adminSchema.methods.isPasswordCorrect = async function(password) {
-    return await bcrypt.compare(password, this.password)
+    return await bcryptjs.compare(password, this.password)
 }
 
 // generate-access-token - it is fast, No async-await

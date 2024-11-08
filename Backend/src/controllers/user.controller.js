@@ -5,7 +5,7 @@ import { destroyOnCloudinary, uploadOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken";
 import mongoose, { Schema, Types } from "mongoose";
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import { Employee } from "../models/employee.model.js";
 
 const generateAccessAndRefreshTken = async (userId) => {
@@ -137,7 +137,7 @@ const adminLogin = asyncHandler(async(req, res) => {
     }
     
     
-    const isPasswordValid = await bcrypt.compare(password, user.password)
+    const isPasswordValid = await bcryptjs.compare(password, user.password)
 
     if(!isPasswordValid) {
         return res
