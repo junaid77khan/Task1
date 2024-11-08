@@ -1,4 +1,3 @@
-
 import dotenv from 'dotenv'
 import connnectDB from "./db/index.js";
 import app from './App.js';

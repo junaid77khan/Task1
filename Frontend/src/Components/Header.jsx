@@ -42,7 +42,7 @@ function Header() {
                     {/* First Section: Logo */}
                     <div className="flex items-center gap-8">
                         <img
-                            src="https://play-lh.googleusercontent.com/DTzWtkxfnKwFO3ruybY1SKjJQnLYeuK3KmQmwV5OQ3dULr5iXxeEtzBLceultrKTIUTr"  // Replace with the actual logo path
+                            src="https://img.freepik.com/free-vector/abstract-logo-flame-shape_1043-44.jpg?t=st=1731019247~exp=1731022847~hmac=7656cb31632b9fdc3823a6ae0f22d70e3172edce2ef7812403bc4b765cedd794&w=740"  // Replace with the actual logo path
                             alt="Logo"
                             className="w-12 h-12 rounded-full block md:block" // Show logo on large screens
                         />
