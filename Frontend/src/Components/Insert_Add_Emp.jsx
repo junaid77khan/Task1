@@ -1,3 +1,6 @@
+
+
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
@@ -17,6 +20,7 @@ function AddEmployee() {
         f_Mobile: "",
         f_Email: "",
     });
+    const [loading, setLoading] = useState(false); // Loading state
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -78,6 +82,8 @@ function AddEmployee() {
           return;
         }
       
+        setLoading(true); // Start loading spinner
+      
         try {
           const token = localStorage.getItem('accessToken');
           const formData = new FormData();
@@ -100,8 +106,11 @@ function AddEmployee() {
           }
         } catch (error) {
           console.error("Error adding employee:", error);
+        } finally {
+          setLoading(false); // Stop loading spinner
         }
       };
+      
     const handleCancel = () => {
         navigate("/elist");
     };
@@ -112,8 +121,15 @@ function AddEmployee() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
             <h1 className="text-2xl font-semibold text-gray-700 mb-6">Add New Employee</h1>
 
+            { 
+                loading &&
+                <div className="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 opacity-75 flex justify-center items-center z-50">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+                </div> 
+            }
+
             <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label className="block text-sm font-medium text-gray-600" htmlFor="f_Name">
                             Name
